@@ -27,7 +27,9 @@ std::vector<int> Finder::findSubstrings(std::string s1, std::string s2)
         current_Substring = s2.substr(0, i);
 
         // find the substring 
-        found = (i == 1) ? s1.find(current_Substring) : s1.find(current_Substring, result[i-2]+1);
+       // found = (i == 1) ? s1.find(current_Substring) : s1.find(current_Substring, result[i - 2] + 1);
+
+        found = (i == 1) ? s1.find(current_Substring) : s1.find(current_Substring, i);
 
         // if statemnt untill the end of the string 
         // if not found, return the last one found outside the loop 
