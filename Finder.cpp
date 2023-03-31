@@ -13,6 +13,7 @@ std::vector<int> Finder::findSubstrings(std::string s1, std::string s2)
     // Initalised to -1 so we do not need the else statement at the end for the for loop when the prefix is not found
 
     std::vector <int> result(s2.size(), -1);
+
     // this string holds the current substring being searched for 
     std::string current_Substring;
     
@@ -27,9 +28,12 @@ std::vector<int> Finder::findSubstrings(std::string s1, std::string s2)
         current_Substring = s2.substr(0, i);
 
         // find the substring 
-       // found = (i == 1) ? s1.find(current_Substring) : s1.find(current_Substring, result[i - 2] + 1);
+        // this finds the last instance 
+        // found = (i == 1) ? s1.find(current_Substring) : s1.find(current_Substring, result[i - 2] + 1); 
+        // works - takes very long 
+        // found = (i == 1) ? s1.find(current_Substring) : s1.find(current_Substring, i);
 
-        found = (i == 1) ? s1.find(current_Substring) : s1.find(current_Substring, i);
+        found = (i == 1) ? s1.find(current_Substring) : s1.find(current_Substring, found);
 
         // if statemnt untill the end of the string 
         // if not found, return the last one found outside the loop 
